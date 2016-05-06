@@ -1,0 +1,27 @@
+{
+  "name": "d3-container",
+  "version": "0.0.1",
+  "description": "Graphic container",
+  "keywords": [
+    "d3", "container", "margin"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "build/d3-container.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/binaworks/d3-container",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/binaworks/d3-container.git"
+  },
+  "scripts": {
+    "pretest": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export * from \\\"../index\\\"; export {version};\");' > build/bundle.js && rollup -f umd -u d3-container -n d3_container -o build/d3-container.js -- build/bundle.js",
+    "test": "faucet `find test -name '*-test.js'`",
+    "prepublish:": "npm run test && uglifyjs build/d3-container.js -c -m -o build/d3-container.min.js && rm -f build/d3-container.zip && zip -j build/d3-container.zip -- LICENSE README.md build/d3-container.js build/d3-container.min.js"
+  },
+  "devDependencies": {
+    "faucet": "0.0",
+    "rollup": "0.20.5",
+    "tape": "4",
+    "uglify-js": "2"
+  }
+}
