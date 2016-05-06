@@ -5,11 +5,6 @@ Graphic container.
 Most d3 examples start some code to define height, width, margins, etc. 
 This plugin is intended to reduce code clutter and mistakes associated with this common task.
 
-## Installing
-
-If you use NPM, `npm install d3-container`. Otherwise, download the 
-[latest release](https://github.com/binaworks/d3-container/releases/latest).
-
 ## API Reference
 
 YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and method names) and italics for instances. 
