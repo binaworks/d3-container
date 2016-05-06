@@ -15,14 +15,20 @@ See the other D3 modules for examples.
 ### Sample Usage
 
 ```js
-var svg = d3.select("body").append("svg");
-var container = d3.container(svg)
-.height(1000)
-.width(650)
-.margin(30, 10, 10);
+var container = d3_container.container();
 
-var content = container.content(),
-
-
+container
+    .height(1000)
+    .width(650)
+    .margin(30, 10, 10);
     
+svg.call(container);
+
+var content = container.content();
+
+content.append("rect")
+       .attr("height", 100)
+       .attr("width", 200)
+       .attr("stroke", "green")
+       .attr("stroke-width",5);
 ```
