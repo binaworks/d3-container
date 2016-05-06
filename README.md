@@ -2,15 +2,9 @@
 
 Graphic container.
  
-Most d3 examples start some code to define height, width, margins, etc. 
-This plugin is intended to reduce code clutter and mistakes associated with this common task.
+Graphic container - A D3 plugin implementing the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
 
 ## API Reference
-
-YOUR API DOCUMENTATION HERE. Use bold for symbols (such as constructor and method names) and italics for instances. 
-See the other D3 modules for examples.
-
-<a href="#container" name="container">#</a> <b>d3-container</b>()
 
 ### Sample Usage
 
