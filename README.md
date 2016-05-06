@@ -2,7 +2,7 @@
 
 Graphic container.
  
-Graphic container - A D3 plugin implementing the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
+A D3 plugin implementing the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
 
 ## API Reference
 
