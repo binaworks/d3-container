@@ -1,8 +1,9 @@
 # d3-container
 
-Graphic container.
+Graphic container 
  
 A D3 plugin implementing the [Margin Convention](https://bl.ocks.org/mbostock/3019563).
+A revised version is in local file, margin_convention.html
 
 ## API Reference
 
@@ -25,4 +26,5 @@ content.append("rect")
        .attr("width", 200)
        .attr("stroke", "green")
        .attr("stroke-width",5);
+
 ```
