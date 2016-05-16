@@ -6,12 +6,34 @@ export default function() {
       m = margin(),
       selection = null,
       content = null;
+      
+      function contentHeight() {
+          return height > 0 ? height - m.top() - m.bottom() : 0 ;
+      }
+      
+      function contentWidth() {
+          return width > 0 ? width - m.left() - m.right() : 0 ;
+      }
             
       function container(context) {
           selection = context.selection ? context.selection() : context; 
+          if (width > 0) {
+              selection.attr("width", width);
+          }
+          else {
+              width = selection.attr("width") || selection.width;
+          }
+          if (height > 0) {
+              selection.attr("height", height);
+          }
+          else {
+              height = selection.attr("height") || selection.height;
+          }
           content = selection.append("g")
                              .attr("class", "content")
-                             .attr("transform", "translate(" + m.left() + "," + m.top() + ")");                
+                             .attr("transform", "translate(" + m.left() + "," + m.top() + ")");  
+          content.width = contentWidth();   
+          content.height = contentHeight();                
       }
       
       container.height = function (_) {
@@ -40,6 +62,10 @@ export default function() {
           content = _;
           return container;
       };
+      
+      container.contentHeight = contentHeight;
+      
+      container.contentWidth = contentWidth;
             
       return container;
 }

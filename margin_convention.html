@@ -40,35 +40,23 @@ body {
 <script src="build/d3-container.js"></script>
 <script>
     
-var container = d3_container.container()
+var outerContainer = d3_container.container()
     .margin(20)
     .width(960)
     .height(500);
     
-var margin = container.margin(),
-    padding = {top: 60, right: 60, bottom: 60, left: 60},
-    innerWidth = container.width() - margin.left() - margin.right(),
-    innerHeight = container.height() - margin.top() - margin.bottom(),
-    width = innerWidth - padding.left - padding.right,
-    height = innerHeight - padding.top - padding.bottom;
-
-var x = d3.scaleLinear()
-    .domain([0, width])
-    .range([0, width]);
-
-var y = d3.scaleLinear()
-    .domain([0, height])
-    .range([0, height]);
-
-var xAxis = d3.axisBottom(x);
-
-var yAxis = d3.axisRight(y);
-
+var margin = outerContainer.margin(),
+    innerWidth = outerContainer.contentWidth(),
+    innerHeight = outerContainer.contentHeight();
+    
+var innerContainer = d3_container.container().margin(60),
+    padding = innerContainer.margin();
+    
 var svg = d3.select("body").append("svg");
 
-svg.call(container);
+svg.call(outerContainer);
 
-var content =  container.content();
+var content =  outerContainer.content();
 
 var defs = content.append("defs");
 
@@ -99,8 +87,22 @@ content.append("rect")
     .attr("width", innerWidth)
     .attr("height", innerHeight);
 
-var g = content.append("g")
-    .attr("transform", "translate(" + padding.left + "," + padding.top + ")");
+content.call(innerContainer);  
+var g = innerContainer.content(),
+    width = innerContainer.contentWidth(),
+    height = innerContainer.contentHeight();
+    
+var x = d3.scaleLinear()
+    .domain([0, width])
+    .range([0, width]);
+
+var y = d3.scaleLinear()
+    .domain([0, height])
+    .range([0, height]);
+
+var xAxis = d3.axisBottom(x);
+
+var yAxis = d3.axisRight(y);
 
 g.append("rect")
     .attr("class", "inner")
@@ -134,13 +136,13 @@ content.append("line")
     .attr("class", "arrow")
     .attr("x1", innerWidth / 2)
     .attr("x2", innerWidth / 2)
-    .attr("y1", innerHeight - padding.bottom)
+    .attr("y1", innerHeight - padding.bottom())
     .attr("y2", innerHeight)
     .attr("marker-start", "url(#triangle-start)");
 
 content.append("line")
     .attr("class", "arrow")
-    .attr("x2", padding.left)
+    .attr("x2", padding.left())
     .attr("y1", innerHeight / 2)
     .attr("y2", innerHeight / 2)
     .attr("marker-end", "url(#triangle-end)");
@@ -148,7 +150,7 @@ content.append("line")
 content.append("line")
     .attr("class", "arrow")
     .attr("x1", innerWidth)
-    .attr("x2", innerWidth - padding.right)
+    .attr("x2", innerWidth - padding.right())
     .attr("y1", innerHeight / 2)
     .attr("y2", innerHeight / 2)
     .attr("marker-end", "url(#triangle-end)");
