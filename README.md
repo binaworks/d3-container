@@ -2,13 +2,13 @@
 
 Graphic container 
  
-A D3 plugin for the margin convention. See https://bl.ocks.org/mbostock/3019563.
+A D3 plugin for the margin convention. See block, http://bl.ocks.org/binaworks/9dce0a385915e8953a45cc6be7fbde42.
 
 ## API Reference
 
 <a name="_container" href="#_container">#</a> <i>container</i>(<i>context</i>)
 
-Create container content, a g element appended to the given *context*, a D3 [selection](https://github.com/d3/d3-selection). 
+Create container content, g element(s) appended to the given *context*, a D3 [selection](https://github.com/d3/d3-selection). 
 Content is offset from context according to the container's left and top [margin](#container_margin) specification.
 
 <a name="container_contentHeight" href="#container_contentHeight">#</a> <i>container</i>.<b>contentHeight</b>()
@@ -40,7 +40,9 @@ bottom, and left sizes.
 
 If *size* is specified, sets the container width to the specified value and returns the container. If *size* is not specified, returns the current width, which defaults to 0.
 
+<a name="container_content" href="#container_content">#</a> <i>container</i>.<b>content</b>()
 
+Returns container content created by [container(context)](#_container).
 
 ### Sample Usage
 
@@ -64,3 +66,4 @@ content.append("rect")
 
 ```
 
+A container can be used to generate g elements for mutlple charts as in this example: [Local Variables with d3-container](http://bl.ocks.org/binaworks/6581188bdc9a822c25e797c28bc4a8e7).
