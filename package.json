@@ -3,7 +3,9 @@
   "version": "0.0.2",
   "description": "Graphic container",
   "keywords": [
-    "d3", "container", "margin"
+    "d3",
+    "container",
+    "margin"
   ],
   "license": "BSD-3-Clause",
   "main": "build/d3-container.js",
@@ -20,7 +22,7 @@
   },
   "devDependencies": {
     "faucet": "0.0",
-    "rollup": "0.20.5",
+    "rollup": "^4.34.6",
     "tape": "4",
     "uglify-js": ">=2.6.0"
   }
